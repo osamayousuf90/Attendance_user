@@ -1,23 +1,26 @@
 import React from 'react'
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import Rootlayout from '../Layouts/Rootlayout';
+import AuthLayout from '../Layouts/AuthLayout';
+import AuthGuard from '../Guard/AuthGuard';
+import SafeLayout from '../Layouts/SafeLayout';
 
 const Home = lazy(() => import("../pages/Home"));
 const About = lazy(() => import("../pages/About"));
+const Login = lazy(() => import("../pages/Login"));
+const SafePage = lazy(() => import("../pages/SafePage"));
+const Users = lazy(() => import("../pages/Users"));
 
+
+const token = localStorage.getItem('token')
 
 export const router = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <Navigate to={"Login"} />
-    // },
     {
         path: "*",
-        element: <Navigate to={"/"} />
+        element: token ? (<Navigate to="/safePage" replace />) : (<Navigate to="/" replace />)
     },
     {
-        // element: <AuthGuard />,
         children: [
             {
                 element: <Rootlayout />,
@@ -32,7 +35,37 @@ export const router = createBrowserRouter([
                     },
                 ],
             },
-
+        ],
+    },
+    {
+        children: [
+            {
+                element: <AuthLayout />,
+                children: [
+                    {
+                        path: "/login",
+                        element: <Login />,
+                    }
+                ]
+            },
+        ],
+    },
+    {
+        element: <AuthGuard />,
+        children: [
+            {
+                element: <SafeLayout />,
+                children: [
+                    {
+                        path: "/safePage",
+                        element: <SafePage />,
+                    },
+                    {
+                        path: "/users",
+                        element: <Users />,
+                    },
+                ]
+            },
         ],
     },
 ]);
