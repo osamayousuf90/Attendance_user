@@ -15,7 +15,7 @@ const AuthHeader = () => {
                 <span className='cursor-pointer text-white font-bold text-lg'>logined as John</span>
             </div>
             <div className='flex gap-4'>
-                <Link to="/safePage" className={`${location?.pathname === "/safePage" ? "text-red-500" : "text-white"} `}>Dashboard</Link>
+                <Link to="/attendance" className={`${location?.pathname === "/attendance" ? "text-red-500" : "text-white"} `}>Attendance</Link>
                 <Link to="/users" className={`${location?.pathname === "/users" ? "text-red-500" : "text-white"} `}>Users</Link>
                 <Link onClick={handleClear} className={`${location?.pathname === "/logout" ? "text-red-500" : "text-white"} `}>Logout</Link>
             </div>

@@ -1,16 +1,17 @@
 import React from 'react'
-import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
-import Rootlayout from '../Layouts/Rootlayout';
+// import Rootlayout from '../Layouts/Rootlayout';
 import AuthLayout from '../Layouts/AuthLayout';
 import AuthGuard from '../Guard/AuthGuard';
 import SafeLayout from '../Layouts/SafeLayout';
-import UserAuthGuard from '../Guard/UserAuthGuard';
+// import UserAuthGuard from '../Guard/UserAuthGuard';
 
-const Home = lazy(() => import("../pages/Home"));
-const About = lazy(() => import("../pages/About"));
+// const Home = lazy(() => import("../pages/Home"));
+// const About = lazy(() => import("../pages/About"));
 const Login = lazy(() => import("../pages/Login"));
-const SafePage = lazy(() => import("../pages/SafePage"));
+const Signup = lazy(() => import("../pages/Signup"));
+const Attendance = lazy(() => import("../pages/Attendance"));
 const Users = lazy(() => import("../pages/Users"));
 
 
@@ -19,26 +20,26 @@ const token = localStorage.getItem('token')
 export const router = createBrowserRouter([
     {
         path: "*",
-        element: token ? (<Navigate to="/safePage" replace />) : (<Navigate to="/" replace />)
+        element: token ? (<Navigate to="/attendance" replace />) : (<Navigate to="/login" replace />)
     },
-    {
-        element: <UserAuthGuard />,
-        children: [
-            {
-                element: <Rootlayout />,
-                children: [
-                    {
-                        path: "/",
-                        element: <Home />,
-                    },
-                    {
-                        path: "/about",
-                        element: <About />,
-                    },
-                ],
-            },
-        ],
-    },
+    // {
+    //     element: <UserAuthGuard />,
+    //     children: [
+    //         {
+    //             element: <Rootlayout />,
+    //             children: [
+    //                 {
+    //                     path: "/",
+    //                     element: <Home />,
+    //                 },
+    //                 {
+    //                     path: "/about",
+    //                     element: <About />,
+    //                 },
+    //             ],
+    //         },
+    //     ],
+    // },
     {
         // element: <UserAuthGuard />,
         children: [
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
                     {
                         path: "/login",
                         element: <Login />,
+                    },
+                    {
+                        path: "/signup",
+                        element: <Signup />,
                     }
                 ]
             },
@@ -60,8 +65,8 @@ export const router = createBrowserRouter([
                 element: <SafeLayout />,
                 children: [
                     {
-                        path: "/safePage",
-                        element: <SafePage />,
+                        path: "/attendance",
+                        element: <Attendance />,
                     },
                     {
                         path: "/users",
