@@ -5,6 +5,7 @@ import Rootlayout from '../Layouts/Rootlayout';
 import AuthLayout from '../Layouts/AuthLayout';
 import AuthGuard from '../Guard/AuthGuard';
 import SafeLayout from '../Layouts/SafeLayout';
+import UserAuthGuard from '../Guard/UserAuthGuard';
 
 const Home = lazy(() => import("../pages/Home"));
 const About = lazy(() => import("../pages/About"));
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
         element: token ? (<Navigate to="/safePage" replace />) : (<Navigate to="/" replace />)
     },
     {
+        element: <UserAuthGuard />,
         children: [
             {
                 element: <Rootlayout />,
@@ -38,6 +40,7 @@ export const router = createBrowserRouter([
         ],
     },
     {
+        // element: <UserAuthGuard />,
         children: [
             {
                 element: <AuthLayout />,
