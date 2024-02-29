@@ -4,17 +4,23 @@ import logo from "../../assets/images/White logo-01.png"
 import { IoEyeOffSharp } from "react-icons/io5";
 import { IoEyeSharp } from "react-icons/io5";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { loginValidation } from '../../validationSchemas';
-
+import { signupValidation } from '../../validationSchemas';
+import { IoMdCloudUpload } from "react-icons/io";
+import { MdOutlineDelete } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 
 const Signup = () => {
     const navigate = useNavigate()
     const [eye, setEye] = useState(false)
     const [eye2, setEye2] = useState(false)
+    const [img, setImg] = useState("")
 
     const initialValues = {
+        name: '',
         email: '',
+        phoneNumber: '',
         password: '',
+        confirmPassword: '',
     };
 
     const onSubmit = (values) => {
@@ -26,16 +32,38 @@ const Signup = () => {
         navigate("/login")
     }
 
+    const handleImg = (e) => {
+        const file = e?.target?.files[0]
+        setImg(URL.createObjectURL(file))
+    }
+
 
     return (
         <div className='w-full h-[100vh] flex flex-col justify-center items-center'>
             <div className='w-[600px] overflow-auto no-scrollbar h-[700px] p-10 sm:p-4 rounded-xl border-2 border-white md:w-[100%] bg-transparent'>
-                <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={loginValidation}>
+                <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={signupValidation}>
                     <Form>
                         <div className='flex justify-center'>
                             <img src={logo} className='w-44' alt="" />
                         </div>
                         <h1 className='text-white mt-4 text-center text-3xl sm:text-xl'>Welcome please singup</h1>
+
+                        <div className='relative flex flex-col items-center w-full md:mt-7 mt-5 '>
+                            <div className='w-[200px] relative h-48 bg-primary flex justify-center items-center mt-2 rounded-full'>
+                                {img && <img src={img} alt='sdf' className='h-full w-full object-contain' />}
+                                {!img &&
+                                    <input accept={'image/*'} type="file" className='h-full w-full z-[99] opacity-0' onChange={(e) => handleImg(e)} />
+                                }
+                                {!img &&
+                                    <div className='text-center absolute flex justify-center w-full'>
+                                        {!img && <CgProfile size={65} className=' rounded-md text-white' />}
+                                    </div>
+                                }
+                                {img && <MdOutlineDelete onClick={() => setImg('')} size={24} className='absolute cursor-pointer top-2 p-1 right-2 rounded-md bg-white text-red-700' />}
+                            </div>
+                        </div>
+
+
                         <div className='flex flex-col my-2 w-full'>
                             <label className='text-white font-semibold my-2'>Name</label>
                             <Field autoComplete="off" className='pl-5 py-2.5 pr-5 outline-none  rounded-lg border-1 border-gray-400 placeholder:text-gray-500' placeholder='Enter Name' type="text" id="name" name="name" />
