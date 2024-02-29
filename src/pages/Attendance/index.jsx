@@ -25,7 +25,7 @@ const Attendance = () => {
             </div>
 
             <div className='mt-5'>
-                <button onClick={handleNavigate} className='bg-[#DA4D56] text-white py-2 px-4 rounded-md transition-all ease-in-out hover:scale-[1.05]'>View History</button>
+                <button onClick={handleNavigate} className='bgLinear text-white py-2 px-4 rounded-md transition-all ease-in-out hover:scale-[1.05]'>View History</button>
             </div>
         </div>
     )

@@ -3,6 +3,24 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #555;
+}
+
 /* // add the code bellow */
 @layer utilities {
 
@@ -30,5 +48,5 @@
 }
 
 .bgLinear {
-    background: linear-gradient(45deg, rgba(34, 164, 116, 1) 0%, rgba(41, 47, 143, 1) 100%);
+    background: linear-gradient(45deg, #E44E5A 0%, #753132 100%);
 }

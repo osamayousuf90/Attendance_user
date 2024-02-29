@@ -6,7 +6,7 @@ export default function SafeLayout({ children }) {
     return (
         <div className='h-screen w-full authBackImg bg-[#2a2a2a] overflow-y-auto'>
             <AuthHeader />
-            <div className="container sm:px-5 mt-5">
+            <div>
                 <Outlet>
                     {children}
                 </Outlet>
