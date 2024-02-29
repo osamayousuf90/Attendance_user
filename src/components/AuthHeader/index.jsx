@@ -14,9 +14,6 @@ const AuthHeader = () => {
                 <span className='text-white font-bold text-3xl md:text-xl'>Osama Yousuf</span>
             </div>
             <div className='flex gap-4'>
-                {/* <Link to="/attendance" className={`${location?.pathname === "/attendance" ? "text-red-500" : "text-white"} `}>Attendance</Link> */}
-                {/* <Link to="/history" className={`${location?.pathname === "/history" ? "text-red-500" : "text-white"} `}>History</Link> */}
-                {/* <Link onClick={handleClear} className={`${location?.pathname === "/logout" ? "text-red-500" : "text-white"} `}>Logout</Link> */}
                 <FaPowerOff onClick={handleClear} className='text-white cursor-pointer' size={35} />
             </div>
         </div>
