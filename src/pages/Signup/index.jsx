@@ -26,7 +26,7 @@ const Signup = () => {
 
     const onSubmit = (values) => {
         if (img) {
-            navigate('/attendance')
+            navigate('/login')
             toast.success("Signup succesfully")
         }
     };

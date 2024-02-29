@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
 import { FaPowerOff } from "react-icons/fa6";
 
 const AuthHeader = () => {
-    const location = useLocation()
 
     const handleClear = () => {
         window.localStorage.clear()

@@ -2,16 +2,15 @@ import './App.css';
 import { RouterProvider } from "react-router-dom"
 import { router } from './route/Route';
 import { Suspense } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import Loader from './components/Loader';
 
 
 
 function App() {
   return (
     <>
-      <Suspense fallback={
-        <h1>Loading...</h1>
-      }>
+      <Suspense fallback={<Loader />}>
         <RouterProvider router={router} />
       </Suspense>
       <ToastContainer

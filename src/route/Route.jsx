@@ -9,11 +9,30 @@ import UserAuthGuard from '../Guard/UserAuthGuard';
 
 // const Home = lazy(() => import("../pages/Home"));
 // const About = lazy(() => import("../pages/About"));
-const Login = lazy(() => import("../pages/Login"));
-const Signup = lazy(() => import("../pages/Signup"));
-const Attendance = lazy(() => import("../pages/Attendance"));
-const History = lazy(() => import("../pages/History"));
 
+const Login = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import("../pages/Login")), 1300);
+    });
+});
+
+const Signup = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import("../pages/Signup")), 1300);
+    });
+});
+
+const Attendance = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import("../pages/Attendance")), 1300);
+    });
+});
+
+const History = lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(import("../pages/History")), 1300);
+    });
+});
 
 const token = localStorage.getItem('token')
 
