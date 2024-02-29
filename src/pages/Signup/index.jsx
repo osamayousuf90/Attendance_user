@@ -75,10 +75,10 @@ const Signup = () => {
                                 <p className='text-white font-semibold text-md'>OR</p>
                                 <div className='h-[2px] w-full bg-white rounded-lg'></div>
                             </div>
-                            <button onClick={handleLoginRoute} className='text-white mt-2 uppercase font-semibold border-3 border-white py-2 w-full px-5 rounded-lg outline-none bg-transparent transition-all ease-in-out hover:scale-[1.05]'>Already have an account?</button>
                         </div>
                     </Form>
                 </Formik>
+                <button onClick={handleLoginRoute} className='text-white mt-2 uppercase font-semibold border-3 border-white py-2 w-full px-5 rounded-lg outline-none bg-transparent transition-all ease-in-out hover:scale-[1.05]'>Already have an account?</button>
             </div>
 
         </div>

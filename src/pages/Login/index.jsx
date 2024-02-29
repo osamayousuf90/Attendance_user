@@ -28,7 +28,7 @@ const Login = () => {
 
     return (
         <div className='w-full h-[100vh] flex flex-col justify-center items-center'>
-            <div className='w-[600px] overflow-auto p-10 sm:p-4 rounded-xl border-2 border-white md:w-[100%] bg-transparent'>
+            <div className='w-[600px] overflow-auto p-10 sm:p-4 rounded-xl border-2 border-white md:w-full bg-transparent'>
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={loginValidation}>
                     <Form>
                         <div className='flex justify-center'>

@@ -5,7 +5,7 @@ import { lazy } from "react";
 import AuthLayout from '../Layouts/AuthLayout';
 import AuthGuard from '../Guard/AuthGuard';
 import SafeLayout from '../Layouts/SafeLayout';
-// import UserAuthGuard from '../Guard/UserAuthGuard';
+import UserAuthGuard from '../Guard/UserAuthGuard';
 
 // const Home = lazy(() => import("../pages/Home"));
 // const About = lazy(() => import("../pages/About"));
@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
     //     ],
     // },
     {
-        // element: <UserAuthGuard />,
+        element: <UserAuthGuard />,
         children: [
             {
                 element: <AuthLayout />,
