@@ -66,7 +66,7 @@ const Signup = () => {
                                 {!img && <IoMdAddCircleOutline size={45} className='absolute cursor-pointer bottom-2 p-2 right-2 rounded-full bg-white text-red-700' />}
                             </div>
                         </div>
-                        <div className='text-white font-bold text-center text-md mt-2' name="name" component="div">Profile image is required</div>
+                        {!img && <div className='text-white font-bold text-center text-md mt-2' name="name" component="div">Profile image is required</div>}
 
                         <div className='flex flex-col my-2 w-full'>
                             <label className='text-white font-semibold my-2'>Name</label>
