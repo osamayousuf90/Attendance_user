@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    modal: "",
+    modal: "confirmation",
 }
 
 export const modalActions = createSlice({

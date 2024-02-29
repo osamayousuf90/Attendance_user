@@ -50,3 +50,11 @@
 .bgLinear {
     background: linear-gradient(45deg, #E44E5A 0%, #753132 100%);
 }
+
+.checkInGradient {
+    background: linear-gradient(45deg, #467EDD 0%, #8272D5 100%);
+}
+
+.checkOutGradient {
+    background: linear-gradient(45deg, #9B3195 0%, #E63675 100%);
+}

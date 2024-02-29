@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setModal } from '../../redux/slices/modalActions'
 
-const Confirmation = ({ onChange }) => {
+const Confirmation = ({ onChange, text }) => {
     const dispatch = useDispatch()
 
     const handleClose = () => {
@@ -12,7 +12,7 @@ const Confirmation = ({ onChange }) => {
     return (
         <div className='w-full flex flex-col justify-center items-center h-screen z-[999] fixed top-0 left-0 bg-[#3838386c]'>
             <div className='bg-[#FFFFFF] shadow-lg w-[350px] md:w-[90%] rounded-md py-4 px-8'>
-                <p className='text-[#747C84] mt-2 font-medium text-lg'>Are you sure?</p>
+                <p className='text-[#747C84] mt-2 font-medium text-lg'>{text}</p>
 
                 <div className='flex justify-end items-center mt-5'>
                     <div className='flex gap-3'>

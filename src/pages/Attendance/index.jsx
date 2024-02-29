@@ -4,19 +4,26 @@ import { TfiHandPointUp } from "react-icons/tfi";
 import { useNavigate } from 'react-router-dom';
 import Confirmation from '../../components/Modals/Confirmation';
 import { useSelector } from 'react-redux';
-
+import CheckedConfirmation from '../../components/Modals/CheckedConfirmation';
+import { setModal } from '../../redux/slices/modalActions';
+import { useDispatch } from 'react-redux';
 
 const Attendance = () => {
     const [checkIn, setCheckIn] = useState(false)
     const navigate = useNavigate()
     const [time, setTime] = useState(new Date());
     const { modal } = useSelector((state) => state?.modalActions)
-
+    const dispatch = useDispatch()
 
     const handleNavigate = () => {
         navigate("/history")
     }
 
+
+    const handleCheckIn = () => {
+        setCheckIn(!checkIn)
+        dispatch(setModal("confirmation"))
+    }
 
     const handleConfirm = (res) => {
         if (res === "yes") {
@@ -36,14 +43,15 @@ const Attendance = () => {
 
     return (
         <div className='w-full mb-5 flex flex-col items-center justify-center'>
-            {modal === "exit" && <Confirmation onChange={handleConfirm} />}
+            {modal === "exit" && <Confirmation text="Are you sure?" onChange={handleConfirm} />}
+            {modal === "confirmation" && <CheckedConfirmation status={checkIn} text={checkIn ? "Your Check-Out time is" : "Your Check-In time is"} />}
             <div>
                 <p className='text-5xl my-4 md:my-0 md:text-2xl text-white text-center font-semibold'> {moment(time).format('h:mm A')}</p>
                 <p className='text-5xl my-4 md:my-0 md:text-2xl text-white text-center font-semibold'>{moment().format('dddd')}</p>
                 <p className='text-5xl my-4 md:my-0 md:text-2xl text-white text-center font-semibold'>{moment().format('MMM D, YYYY')}</p>
             </div>
 
-            <div onClick={() => setCheckIn(!checkIn)} className={`mt-14 md:mt-4 h-[200px] w-[200px] md:h-[150px] md:w-[150px] gap-3 cursor-pointer flex flex-col justify-center items-center  rounded-full ${checkIn ? "bg-[#597BDD] shadow-cyan-500/50" : "bg-[#e25a87] shadow-cyan-500/50"}`}>
+            <div onClick={handleCheckIn} className={`mt-14 md:mt-4 h-[200px] w-[200px] md:h-[150px] md:w-[150px] gap-3 cursor-pointer flex flex-col justify-center items-center  rounded-full ${checkIn ? "bg-[#597BDD] shadow-cyan-500/50" : "bg-[#e25a87] shadow-cyan-500/50"}`}>
                 <TfiHandPointUp className='text-white' size={55} />
                 <p className='text-white uppercase text-xl md:text-sm'>{checkIn ? "Check In" : "Check Out"}</p>
             </div>
