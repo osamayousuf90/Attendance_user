@@ -1,11 +1,13 @@
 import React from 'react'
 import { FaPowerOff } from "react-icons/fa6";
+import { setModal } from '../../redux/slices/modalActions';
+import { useDispatch } from 'react-redux';
 
 const AuthHeader = () => {
+    const dispatch = useDispatch()
 
-    const handleClear = () => {
-        window.localStorage.clear()
-        window.location.reload()
+    const handleOpenModal = () => {
+        dispatch(setModal("exit"))
     }
 
     return (
@@ -14,7 +16,7 @@ const AuthHeader = () => {
                 <span className='text-white font-bold text-3xl md:text-xl'>Osama Yousuf</span>
             </div>
             <div className='flex gap-4'>
-                <FaPowerOff onClick={handleClear} className='text-white cursor-pointer' size={35} />
+                <FaPowerOff onClick={handleOpenModal} className='text-white cursor-pointer' size={35} />
             </div>
         </div>
     )

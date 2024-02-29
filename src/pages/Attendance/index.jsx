@@ -2,15 +2,27 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react'
 import { TfiHandPointUp } from "react-icons/tfi";
 import { useNavigate } from 'react-router-dom';
+import Confirmation from '../../components/Modals/Confirmation';
+import { useSelector } from 'react-redux';
 
 
 const Attendance = () => {
     const [checkIn, setCheckIn] = useState(false)
     const navigate = useNavigate()
     const [time, setTime] = useState(new Date());
+    const { modal } = useSelector((state) => state?.modalActions)
+
 
     const handleNavigate = () => {
         navigate("/history")
+    }
+
+
+    const handleConfirm = (res) => {
+        if (res === "yes") {
+            window.localStorage.clear()
+            window.location.reload()
+        }
     }
 
 
@@ -24,6 +36,7 @@ const Attendance = () => {
 
     return (
         <div className='w-full mb-5 flex flex-col items-center justify-center'>
+            {modal === "exit" && <Confirmation onChange={handleConfirm} />}
             <div>
                 <p className='text-5xl my-4 md:my-0 md:text-2xl text-white text-center font-semibold'> {moment(time).format('h:mm A')}</p>
                 <p className='text-5xl my-4 md:my-0 md:text-2xl text-white text-center font-semibold'>{moment().format('dddd')}</p>
