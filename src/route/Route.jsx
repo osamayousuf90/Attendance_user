@@ -12,7 +12,7 @@ import UserAuthGuard from '../Guard/UserAuthGuard';
 const Login = lazy(() => import("../pages/Login"));
 const Signup = lazy(() => import("../pages/Signup"));
 const Attendance = lazy(() => import("../pages/Attendance"));
-const Users = lazy(() => import("../pages/Users"));
+const History = lazy(() => import("../pages/History"));
 
 
 const token = localStorage.getItem('token')
@@ -69,8 +69,8 @@ export const router = createBrowserRouter([
                         element: <Attendance />,
                     },
                     {
-                        path: "/users",
-                        element: <Users />,
+                        path: "/history",
+                        element: <History />,
                     },
                 ]
             },

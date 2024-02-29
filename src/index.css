@@ -22,9 +22,13 @@
 
 .authBackImg {
     background-blend-mode: multiply;
-    background-color: #0000006e;
+    background-color: #000000b7;
     background-image: url("assets/images/background.jpg");
     background-position: 0;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.bgLinear {
+    background: linear-gradient(45deg, rgba(34, 164, 116, 1) 0%, rgba(41, 47, 143, 1) 100%);
 }
