@@ -7,7 +7,6 @@ import checkedIcon from "../../assets/images/checked.gif"
 const CheckedConfirmation = ({ text, status }) => {
     const dispatch = useDispatch()
     const [time, setTime] = useState(new Date());
-    const [update, setUpdate] = useState(false)
 
     const handleClose = () => {
         dispatch(setModal(""))
@@ -20,10 +19,6 @@ const CheckedConfirmation = ({ text, status }) => {
 
         return () => clearInterval(intervalID);
     }, []);
-
-    useEffect(() => {
-        setUpdate(!update)
-    }, [])
 
 
     return (

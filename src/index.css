@@ -2,59 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+.historyScrollHeight {
+  height: calc(100vh - 275px);
+}
+
+@media (max-height : 600px) {
+    .historyScrollHeight {
+        height: calc(100vh - 244px);
+    }
+}
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: transparent;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-
-    background: #555;
+  background: #555;
 }
 
 /* // add the code bellow */
 @layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Hide scrollbar for IE, Edge and Firefox */
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
 }
 
 .authBackImg {
-    background-blend-mode: multiply;
-    background-color: #000000b7;
-    background-image: url("assets/images/background.jpg");
-    background-position: 0;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-blend-mode: multiply;
+  background-color: #000000b7;
+  background-image: url("assets/images/background.jpg");
+  background-position: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .bgLinear {
-    background: linear-gradient(45deg, #E44E5A 0%, #753132 100%);
+  background: linear-gradient(45deg, #e44e5a 0%, #753132 100%);
 }
 
 .checkInGradient {
-    background: linear-gradient(45deg, #467EDD 0%, #8272D5 100%);
+  background: linear-gradient(45deg, #467edd 0%, #8272d5 100%);
 }
 
 .checkOutGradient {
-    background: linear-gradient(45deg, #9B3195 0%, #E63675 100%);
+  background: linear-gradient(45deg, #9b3195 0%, #e63675 100%);
 }

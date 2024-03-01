@@ -15,7 +15,7 @@ const History = () => {
     }
 
     return (
-        <div className='w-full mb-5 flex flex-col'>
+        <div className='w-full mb-5 sm:mb-0 flex flex-col'>
             {modal === "exit" && <Confirmation text="Are you sure?" onChange={handleConfirm} />}
             <HistoryHeader />
             <HistoryList />

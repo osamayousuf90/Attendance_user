@@ -3,7 +3,7 @@ import HistoryCard from '../HistoryCard'
 
 const HistoryList = () => {
     return (
-        <div style={{ height: "calc(100vh - 275px)" }} className='px-6 mt-4 overflow-auto w-full'>
+        <div className='px-6 historyScrollHeight mt-4 sm:mt-0 overflow-auto w-full'>
             <HistoryCard />
             <HistoryCard />
             <HistoryCard />

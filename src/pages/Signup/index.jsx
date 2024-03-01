@@ -43,7 +43,7 @@ const Signup = () => {
 
     return (
         <div className='w-full h-[100vh] flex flex-col justify-center items-center'>
-            <div style={{ height: "calc(100vh - 180px)" }} className='w-[600px] overflow-auto no-scrollbar  p-10 sm:p-4 rounded-xl border-2 border-white md:w-[100%] bg-transparent'>
+            <div style={{ height: "calc(100vh - 180px)" }} className='w-[600px] overflow-auto p-10 sm:p-4 rounded-xl border-2 border-white md:w-[100%] bg-transparent'>
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={signupValidation}>
                     <Form>
                         <div className='flex justify-center'>
@@ -51,8 +51,8 @@ const Signup = () => {
                         </div>
                         <h1 className='text-white mt-4 text-center text-3xl sm:text-xl'>Welcome please singup</h1>
 
-                        <div className='relative flex flex-col items-center w-full md:mt-7 mt-5 '>
-                            <div className='w-[200px] relative h-48 bg-[#B6B6B6] flex justify-center items-center mt-2 rounded-full'>
+                        <div className='relative flex flex-col items-center w-full mt-4 '>
+                            <div className='w-[200px] relative h-[200px] md:w-[140px] md:h-[140px] bg-[#B6B6B6] flex justify-center items-center mt-2 rounded-full'>
                                 {img && <img src={img} alt='sdf' className='h-full w-full rounded-full object-contain' />}
                                 {!img &&
                                     <input accept={'image/*'} type="file" className='h-full w-full z-[99] opacity-0' onChange={(e) => handleImg(e)} />
