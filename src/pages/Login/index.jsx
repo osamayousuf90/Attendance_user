@@ -29,7 +29,7 @@ const Login = () => {
   return (
     <div className="w-full h-[100vh] flex flex-col justify-center items-center">
       <div
-        style={{ height: "calc(100vh - 40px)" }}
+        // style={{ height: "calc(100vh - 40px)" }}
         className="w-[600px] overflow-auto no-scrollbar p-10 sm:p-4 rounded-xl border-2 border-white md:w-full bg-transparent"
       >
         <Formik
