@@ -6,6 +6,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { loginValidation } from "../../validationSchemas";
 import { toast } from "react-toastify";
+import { LoginApi } from "../../services";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,10 +17,26 @@ const Login = () => {
     password: "",
   };
 
-  const onSubmit = (values) => {
-    window.localStorage.setItem("token", "true");
-    navigate("/attendance");
-    toast.success("Logged in succesfully");
+  const onSubmit = async (values) => {
+    try {
+      const body = {
+        ...values,
+        deviceId: '12345'
+      }
+      const res = await LoginApi(body)
+      if (res?.message === "Wrong Email" || res?.message === "Wrong Password") {
+        toast.warning("Invalid Credential")
+      }
+      else {
+        window.localStorage.setItem('token', res?.data?.token)
+        window.localStorage.setItem('name', res?.data?.name)
+        window.localStorage.setItem('userId', res?.data?.id)
+        navigate("/attendance");
+        toast.success("Logged in succesfully");
+      }
+    } catch (err) {
+      toast.error('Some error occured')
+    }
   };
 
   const handleSigup = () => {

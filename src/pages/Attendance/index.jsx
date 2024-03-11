@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import CheckedConfirmation from '../../components/Modals/CheckedConfirmation';
 import { setModal } from '../../redux/slices/modalActions';
 import { useDispatch } from 'react-redux';
+import { GettingCheckin } from '../../services';
 
 const Attendance = () => {
     const [checkIn, setCheckIn] = useState(false)
@@ -14,6 +15,17 @@ const Attendance = () => {
     const [time, setTime] = useState(new Date());
     const { modal } = useSelector((state) => state?.modalActions)
     const dispatch = useDispatch()
+    const userId = localStorage.getItem("userId")
+
+    // getting user check in status
+    const gettingUserCheckIn = async () => {
+        const body = {
+            userId: parseInt(userId)
+        }
+        const res = await GettingCheckin(body)
+        console.log("getting checking user ====>", res)
+    }
+
 
     const handleNavigate = () => {
         navigate("/history")
@@ -39,7 +51,14 @@ const Attendance = () => {
         }, 1000);
 
         return () => clearInterval(intervalID);
+        // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        gettingUserCheckIn()
+        // eslint-disable-next-line
+    }, [])
+
 
     return (
         <div className='w-full mb-5 flex flex-col items-center justify-center'>

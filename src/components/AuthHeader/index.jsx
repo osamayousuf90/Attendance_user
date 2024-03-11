@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 
 const AuthHeader = () => {
     const dispatch = useDispatch()
+    const name = localStorage?.getItem('name')
 
     const handleOpenModal = () => {
         dispatch(setModal("exit"))
@@ -13,7 +14,7 @@ const AuthHeader = () => {
     return (
         <div className='w-full py-4 px-10 flex justify-between items-center'>
             <div>
-                <span className='text-white font-bold text-3xl md:text-xl'>Osama Yousuf</span>
+                <span className='text-white font-bold text-3xl capitalize md:text-xl'>{name}</span>
             </div>
             <div className='flex gap-4'>
                 <FaPowerOff onClick={handleOpenModal} className='text-white cursor-pointer' size={35} />

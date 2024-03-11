@@ -9,25 +9,40 @@ import { MdOutlineDelete } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { toast } from 'react-toastify';
+import { SignUp } from '../../services';
 
 const Signup = () => {
     const navigate = useNavigate()
     const [eye, setEye] = useState(false)
     const [eye2, setEye2] = useState(false)
-    const [img, setImg] = useState("")
+    const [img, setImg] = useState("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4qD5w-Nx-KaaUOdVaFc3dnXL0bMsn3ccBuZPC1VhgaA&s")
 
     const initialValues = {
         name: '',
         email: '',
-        phoneNumber: '',
+        phone: '',
         password: '',
         confirmPassword: '',
     };
 
-    const onSubmit = (values) => {
-        if (img) {
-            navigate('/login')
-            toast.success("Signup succesfully")
+    const onSubmit = async (values) => {
+        try {
+            if (img) {
+                const body = {
+                    ...values,
+                    image: img,
+                    deviceId: '12345',
+                }
+                const res = await SignUp(body)
+                if (res?.message === "Email Already Exists") {
+                    toast.warning("Email Already Exists")
+                } else if (res?.message === "user registered successfully") {
+                    navigate('/login')
+                    toast.success("Signup succesfully")
+                }
+            }
+        } catch (err) {
+            toast.error("Some error occured")
         }
     };
 
@@ -82,8 +97,8 @@ const Signup = () => {
 
                         <div className='flex flex-col my-2 w-full'>
                             <label className='text-white font-semibold my-2'>Phone Number</label>
-                            <Field autoComplete="off" className='pl-5 py-2.5 pr-5 outline-none  rounded-lg border-1 border-gray-400 placeholder:text-gray-500' placeholder='Enter Phone Number' type="text" id="phoneNumber" name="phoneNumber" />
-                            <ErrorMessage className='text-white font-bold text-md mt-2 ml-2' name="phoneNumber" component="div" />
+                            <Field autoComplete="off" className='pl-5 py-2.5 pr-5 outline-none  rounded-lg border-1 border-gray-400 placeholder:text-gray-500' placeholder='Enter Phone Number' type="text" id="phone" name="phone" />
+                            <ErrorMessage className='text-white font-bold text-md mt-2 ml-2' name="phone" component="div" />
                         </div>
 
                         <div className='flex flex-col relative my-2 w-full'>
